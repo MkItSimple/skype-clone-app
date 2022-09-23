@@ -53,7 +53,7 @@ npm run dev
 
 ## Group Chat
 
-![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663471055/chat_app/zaapjrdnl0mruqhmhod3.jpg)
+![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663760890/chat_app/y5lckxb4bzptrfou2yv3.jpg)
 
   
 
