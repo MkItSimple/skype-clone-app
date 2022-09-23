@@ -7,8 +7,6 @@ cloudinary.config({
 });
 
 exports.upload = async (req, res) => {
-  console.log("req.user ", req.user);
-
   let result = await cloudinary.v2.uploader.upload(req.body.image, {
     folder: "mern_portfolio",
     public_id: `${Date.now()}`,
