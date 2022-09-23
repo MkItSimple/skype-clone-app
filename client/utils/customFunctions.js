@@ -138,7 +138,7 @@ export const formatLatestMessage = (message) => {
     const emojiCount = (message.match(/emo01/g) || []).length;
     const spaceCount = (message.match(/&nbsp;/g) || []).length;
     const divCount = (message.match(/<div>/g) || []).length; // 11 Chars
-    let totalSubstrings = 4 * emojiCount + 40;
+    let totalSubstrings = 4 * emojiCount + 30;
     totalSubstrings = 5 * spaceCount + totalSubstrings;
     totalSubstrings = 7 * bCount + totalSubstrings;
     totalSubstrings = 17 * strikeCount + totalSubstrings;

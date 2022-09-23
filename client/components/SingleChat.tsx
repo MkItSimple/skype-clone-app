@@ -15,7 +15,6 @@ import {
 import { socket } from "../utils/ws";
 
 const SingleChat = () => {
-  const router = useRouter();
   const [newMessage, setNewMessage] = useState("");
   const [typing, setTyping] = useState(false);
   const [istyping, setIsTyping] = useState(false);
@@ -38,10 +37,7 @@ const SingleChat = () => {
     selectedChat,
     messages,
     onlineUsers,
-    setCallRejected,
-    setRejectedBy,
     setMessages,
-    setChats,
     perPage,
     setPerPage,
   } = useApp();
