@@ -99,17 +99,7 @@ const Scrollable = ({ user, messages }: ScrollableProps) => {
                   <div
                     className={"message__bubble"}
                     dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(
-                        toGif(
-                          `${m.content} ${
-                            i === messages.length - 1
-                              ? " lastElement"
-                              : i === 14
-                              ? " scrollRef"
-                              : " noRef"
-                          }`
-                        )
-                      ),
+                      __html: DOMPurify.sanitize(toGif(`${m.content}`)),
                     }}
                   ></div>
                 </div>
