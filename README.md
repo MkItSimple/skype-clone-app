@@ -19,7 +19,7 @@ MERN stack skype chat clone app. Uses Socket.io for real-time chatting. It uses 
 Clone the project
 
 ```bash
-git clone https://github.com/MkItSimple/skype-chat-clone.git
+git clone https://github.com/MkItSimple/skype-clone-app.git
 ```
 
 <br  />
