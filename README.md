@@ -8,7 +8,7 @@ MERN stack skype chat clone app. Uses Socket.io for real-time chatting. It uses 
 
 ## Tech Stack
 
-Socket.IO | [NextJS](https://nextjs.org/) | [MongoDB](https://www.mongodb.com/) | [NodeJS](https://nodejs.org/en/) | [Cloudinary](https://cloudinary.com/)
+[Socket.IO](https://socket.io/) | [NextJS](https://nextjs.org/) | [MongoDB](https://www.mongodb.com/) | [NodeJS](https://nodejs.org/en/) | [Cloudinary](https://cloudinary.com/)
 
   
 
@@ -115,4 +115,4 @@ npm run dev
 
 ## Made By
 
-- [Choreyn Anania](https://github.com/piyush-eon)
+- [Choreyn Anania](https://github.com/MkItSimple)
