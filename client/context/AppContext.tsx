@@ -67,12 +67,8 @@ export const AppContextProvider = ({
   };
 
   const accessChat = async (userId: string, token: string) => {
-    console.log("accessChat called");
-
     try {
       const { data } = await accessChatApi(userId, token);
-
-      // if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       if (!chats.find((c) => c._id === data._id)) {
         setChats([data, ...chats]);
         socket.emit("new chat created", data);
@@ -186,9 +182,7 @@ export const AppContextProvider = ({
 
   useEffect(() => {
     socket.on("connected", async () => {
-      console.log("connected client");
       socket.emit("get online users");
-      // socket.emit("someone is connected");
     });
 
     socket.on("online users", async (onlineUsers) => {
@@ -197,16 +191,8 @@ export const AppContextProvider = ({
       fetchContacts(token);
     });
 
-    // socket.on("someone is connected client", async (onlineUsers) => {
-    //   console.log("test someone is connected client ", onlineUsers);
-    //   setOnlineUsers(onlineUsers);
-    //   fetchContacts(token);
-    // });
-
     socket.on("readby updated", async (updatedChat, whoClicked) => {
       if (user && whoClicked !== user._id && selectedChat) {
-        console.log("whoClicked client", whoClicked);
-
         const { data } = await messagesCountApi(selectedChat._id, user.token);
         console.log("test count here", data);
         const skip = data > 30 ? data - 15 : 0;
@@ -220,18 +206,12 @@ export const AppContextProvider = ({
     });
 
     socket.on("new message recieved", async (newMessageRecieved: any) => {
-      console.log("test new message recieved ", newMessageRecieved);
-
       if (user) {
         const { data } = await fetchChatsApi(user.token);
 
         setChats(data);
 
         if (selectedChat && selectedChat._id === newMessageRecieved.chat._id) {
-          console.log(
-            "selectedChat.latestMessage ",
-            selectedChat.latestMessage
-          );
           if (selectedChat.latestMessage) {
             await updateMessageReadByApi(selectedChat._id, user.token);
 
@@ -239,7 +219,7 @@ export const AppContextProvider = ({
               selectedChat._id,
               user.token
             );
-            console.log("test count here", data);
+
             const skip = data > 30 ? data - 15 : 0;
             const messagesRes = await fetchMessagesApi(
               selectedChat._id,
@@ -256,13 +236,7 @@ export const AppContextProvider = ({
       }
     });
 
-    socket.on("new chat created", (newChat) => {
-      // console.log("test new chat created");
-      // if (user) {
-      //   const members = newChat.users.filter((u: any) => u._id === user._id);
-      //   members.length > 0 && fetchChats(user.token);
-      // }
-    });
+    socket.on("new chat created", (newChat) => {});
 
     socket.on("new group chat created", (newGroupChat) => {
       console.log("test new group chat created");
@@ -295,7 +269,10 @@ export const AppContextProvider = ({
         const chatList = chats.filter(
           (c: any) => c._id === updatedGroupChat._id
         );
-        members.length === 0 && chatList.length > 0 && fetchChats(user.token);
+        if (members.length === 0 && chatList.length > 0) {
+          fetchChats(user.token);
+          selectedChat._id === updatedGroupChat._id && setSelectedChat(null);
+        }
       }
     });
 

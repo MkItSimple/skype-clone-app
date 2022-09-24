@@ -1,6 +1,6 @@
 import moment from "moment";
 import "moment-precise-range-plugin";
-import { MouseEvent, UIEvent, useEffect, useRef, useState } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { dayFormat, minutesDifference, toGif } from "../utils/customFunctions";
 import { User } from "../utils/types";
@@ -33,13 +33,10 @@ const Scrollable = ({ user, messages }: ScrollableProps) => {
   };
 
   const scrollToSomething = () => {
-    console.log("scrollToSomething called");
     scrollRef.current?.scrollIntoView();
   };
 
   useEffect(() => {
-    console.log("messages.length ", messages.length);
-
     if (messages.length > 0) {
       messages.length > 29 ? scrollToSomething() : scrollToBottom();
       const tempMessagesDay: any[] = [];

@@ -22,14 +22,6 @@ export const fetchUnreadMessagesApi = async (authtoken: string) => {
   });
 };
 
-// export const fetchMessagesApi = async (chatId: string, authtoken: string) => {
-//   return await axios.get(`${process.env.apiUrl}/message/${chatId}`, {
-//     headers: {
-//       Authorization: `Bearer ${authtoken}`,
-//     },
-//   });
-// };
-
 export const fetchMessagesApi = async (
   chatId: string,
   skip: number,
