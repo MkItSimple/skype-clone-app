@@ -180,19 +180,8 @@ const SingleChat = () => {
     };
   }, [selectedChat, user, onTypingHandler]);
 
-  const onChangeHandler = () => {
-    console.log("test content changed");
-  };
-
-  // const loadMore = () => {
-  //   setPerPage((prev: number) => prev + 15);
-  // };
-
   const getScrollPositionHandler = async (e: UIEvent<HTMLDivElement>) => {
-    // console.log("scrolling!", e.currentTarget.scrollTop);
     if (e.currentTarget.scrollTop <= 30) {
-      // loadMore();
-      // console.log("loadMore");
       const { data } = await messagesCountApi(selectedChat._id, user.token);
       if (perPage >= data) return;
       setTimeout(async () => {
@@ -220,43 +209,14 @@ const SingleChat = () => {
         showEmojiPicker={showEmojiPicker}
         showWYSIWYG={showWYSIWYG}
       >
-        <div className="chat__header">
-          {selectedChat.isGroupChat ? (
-            <AvatarGroup chat={selectedChat} />
-          ) : (
-            <Avatar
-              user={getUserPartner(user, selectedChat.users)}
-              myId={user._id}
-            />
-          )}
-          <div className="header_name_container">
-            <div
-              className="name"
-              onClick={() =>
-                selectedChat.isGroupChat && setOpenModalUpdate(true)
-              }
-            >
-              {!selectedChat.isGroupChat
-                ? getSenderName(user, selectedChat.users)
-                : selectedChat.chatName}
-            </div>
-            <div className="status_text">
-              {!selectedChat.isGroupChat
-                ? isOffline(user, selectedChat.users, onlineUsers)
-                  ? ""
-                  : getSenderStatus(user, selectedChat.users)
-                : selectedChat.users.length +
-                  ` participant${selectedChat.users.length > 1 ? "s" : ""}`}
-            </div>
-          </div>
-          {selectedChat.isGroupChat && (
-            <div className="gear__icon__container">
-              <GearIcon
-                onClickFunction={() => setOpenModalUpdate(!openModalUpdate)}
-              />
-            </div>
-          )}
-        </div>
+        <ChatHeader
+          user={user}
+          selectedChat={selectedChat}
+          onlineUsers={onlineUsers}
+          openModalUpdate={openModalUpdate}
+          setOpenModalUpdate={setOpenModalUpdate}
+        />
+
         <div className="chat__content">
           <div
             className="chat__content__top scroll__styles"
@@ -300,69 +260,10 @@ const SingleChat = () => {
                 <></>
               )}
 
-              <div className="emojis__container">
-                <div className="emojis">
-                  <Image
-                    onClick={() => emojiClicked("emoji/emoji_clapping_gif")}
-                    src={"/emoji/emoji_clapping_gif.png"}
-                    height={25}
-                    width={25}
-                    alt=""
-                  />
-                  <Image
-                    onClick={() => emojiClicked("emoji/emoji_laughing_gif")}
-                    src={"/emoji/emoji_laughing_gif.png"}
-                    height={25}
-                    width={25}
-                    alt=""
-                  />
-                  <Image
-                    onClick={() => emojiClicked("emoji/emoji_yes_gif")}
-                    src={"/emoji/emoji_yes_gif.png"}
-                    height={25}
-                    width={25}
-                    alt=""
-                  />
-                  <Image
-                    className="rotate"
-                    onClick={() => emojiClicked("emoji/emoji_smile_gif")}
-                    src={"/emoji/emoji_smile_gif.png"}
-                    height={25}
-                    width={25}
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="richTextEditor">
-                <button>
-                  <BoldIcon
-                    onClickFunction={() =>
-                      document.execCommand("bold", false, "")
-                    }
-                  />
-                </button>
-                <button>
-                  <ItablicIcon
-                    onClickFunction={() =>
-                      document.execCommand("italic", false, "")
-                    }
-                  />
-                </button>
-                <button>
-                  <StrikeThroughIcon
-                    onClickFunction={() =>
-                      document.execCommand("strikethrough", false, "")
-                    }
-                  />
-                </button>
-                <button>
-                  <UnderlineIcon
-                    onClickFunction={() =>
-                      document.execCommand("underline", false, "")
-                    }
-                  />
-                </button>
-              </div>
+              <EmojiPicker emojiClicked={emojiClicked} />
+
+              <RichTextEditor />
+
               <div className="input__bottom">
                 <div
                   className="smiley"
@@ -376,7 +277,6 @@ const SingleChat = () => {
                   contentEditable={true}
                   onKeyDown={onKeydownHandler}
                   onKeyUp={onKeyupHandler}
-                  onChange={onChangeHandler}
                   onPaste={onPasteHandler}
                   suppressContentEditableWarning={true}
                 ></div>
@@ -409,35 +309,18 @@ export default SingleChat;
 import styled from "styled-components";
 import {
   fetchMessagesApi,
-  fetchMoreMessagesApi,
   messagesCountApi,
   sendMessageApi,
 } from "../api/message";
 import { useApp } from "../context/AppContext";
-import {
-  getSenderName,
-  getSenderStatus,
-  getUserPartner,
-  isOffline,
-} from "../utils/logics";
+import { getUserPartner } from "../utils/logics";
 import { MESSAGE_TYPE } from "../utils/types";
-import Avatar from "./avatar/Avatar";
 import Scrollable from "./Scrollable";
-import {
-  AIcon,
-  ArrowDown,
-  BoldIcon,
-  GearIcon,
-  ItablicIcon,
-  MarkerIcon,
-  Smiley,
-  StrikeThroughIcon,
-  UnderlineIcon,
-} from "./svg/Icons";
-import { useRouter } from "next/router";
+import { AIcon, ArrowDown, MarkerIcon, Smiley } from "./svg/Icons";
 import { toast } from "react-toastify";
-import AvatarGroup from "./avatar/AvatarGroup";
-import { fetchChatsApi } from "../api/chat";
+import RichTextEditor from "./RichTextEditor";
+import EmojiPicker from "./EmojiPicker";
+import ChatHeader from "./ChatHeader";
 type SingleChatContainerProps = {
   bottomHeight: number;
   showEmojiPicker: boolean;
