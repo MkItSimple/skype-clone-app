@@ -63,13 +63,10 @@ io.on("connection", (socket) => {
       return u._id === user._id;
     });
     if (index !== -1) onlineUsers.splice(index, 1);
-    // socket.broadcast.emit("online users", onlineUsers);
     io.emit("online users", onlineUsers);
   });
 
   socket.on("new message", (newMessageRecieved) => {
-    // console.log("newMessageRecieved ", newMessageRecieved);
-
     var chat = newMessageRecieved.chat;
     // check if group chat then just emit to just specific chat
     if (chat.isGroupChat) {
@@ -77,20 +74,10 @@ io.on("connection", (socket) => {
     } else {
       io.emit("new message recieved", newMessageRecieved);
     }
-
-    // io.emit("new message recieved", newMessageRecieved); // to all connected clients
-    // io.to(socketId).emit(/* ... */); // to individual socketid (private message)
-    // socket.broadcast.emit("new message recieved", newMessageRecieved); // to all clients in the current namespace except the sender
-    // io.in(chat._id).emit("new message recieved", newMessageRecieved);
   });
 
   socket.on("readby updated", (updatedChat, whoClicked) => {
     io.in(updatedChat._id).emit("readby updated", updatedChat, whoClicked);
-  });
-
-  socket.on("new chat created", (newChat) => {
-    // console.log("new chat created server ", newChat);
-    // socket.broadcast.emit("new group chat created", newChat);
   });
 
   socket.on("new group chat created", (newGroupChat) => {
