@@ -127,24 +127,13 @@ const ModalUpdate = ({ onClickFuntion }: { onClickFuntion?: () => void }) => {
         user.token
       );
 
-      console.log("test data ", data);
-
-      const sendMessageResponse = await sendMessageApi(
-        `${user.firstname} has left the group`,
-        MESSAGE_TYPE.TXT,
-        selectedChat._id,
-        user.token
-      );
-
+      socket.emit("left the group", data);
+      setOpenModalUpdate(false);
       toast(`You left the group chat ${selectedChat.chatName} !`, {
         type: "success",
         position: "top-center",
       });
-
-      socket.emit("left the group", selectedChat);
-
       setSelectedChat(null);
-      setOpenModalUpdate(false);
     }
   };
 

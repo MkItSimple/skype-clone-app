@@ -256,8 +256,6 @@ export const AppContextProvider = ({
     });
 
     socket.on("group chat updated", (updatedGroupChat) => {
-      console.log("test group chat updated");
-
       if (user) {
         const members = updatedGroupChat.users.filter(
           (u: any) => u._id === user._id
@@ -276,13 +274,16 @@ export const AppContextProvider = ({
       }
     });
 
-    socket.on("someone left the group", async (chat) => {
-      setSelectedChat(chat);
+    socket.on("someone left the group", async (leftChat) => {
       if (user) {
-        const { data } = await messagesCountApi(selectedChat._id, user.token);
-        const skip = data - perPage;
-        const messagesRes = await fetchMessagesApi(chat._id, skip, user.token);
-        setMessages(messagesRes.data);
+        const members = leftChat.users.filter((u: any) => u._id === user._id);
+        if (members.length > 0) {
+          const { data } = await fetchChatsApi(user.token);
+          setChats(data);
+          selectedChat &&
+            selectedChat._id === leftChat._id &&
+            setSelectedChat(leftChat);
+        }
       }
     });
 
