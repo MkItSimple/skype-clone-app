@@ -57,49 +57,41 @@ npm run dev
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663470008/chat_app/svtjeoylbh6ecidw8nxo.jpg)
 
-<br  /> 
 
 ## Contact List
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663472283/chat_app/llaocz6wg52oudxdveji.jpg)
 
-<br  /> 
 
 ## Real Time notifications
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663469531/chat_app/j8hsiwdpykwazdcid6zi.jpg)
 
-<br  /> 
 
 ## Online status
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663472151/chat_app/haltfjqr54ozs61bpvvu.jpg)
 
-<br  />
 
 ## Typing indicator
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663467255/chat_app/p7gtscggt2naaf9ao4dk.jpg)
 
-<br  />  
 
 ## Creating Group Chat
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663429907/chat_app/od4zoqva0mvpewqcnqfe.jpg)
 
-<br  />
 
 ## Updating Group Chat
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663429908/chat_app/nlnkurtdqtm10dgn0hro.jpg)
 
-<br  />
 
 ## Simple Emoji Picker and WYSIWYG editor
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663429907/chat_app/fcye5fbidwviduqj9xkd.jpg)
 
-<br  />
 
 ## Showing who reads the messages
 
