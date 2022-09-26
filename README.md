@@ -2,9 +2,9 @@
 
 # Skype Chat Clone
 
-MERN stack skype chat clone app. Uses Socket.io for real-time chatting. It uses MongoDB for storing data.
-
-  
+Full Stack Skype Chat Clone. 
+Uses Socket.io for real time communication.
+By using mongoDB Indexing, it is capable of fetching the last 100 messages from over 50 million messages in less than 1 second.
 
 ## Tech Stack
 
