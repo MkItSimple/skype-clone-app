@@ -1,10 +1,9 @@
   
 
-# Skype Chat Clone
-
-Full Stack Skype Chat Clone. 
-Uses Socket.io for real time communication.
-By using mongoDB Indexing, it is capable of fetching the last 100 messages from over 50 million messages in less than 1 second.
+# Full Stack Skype Chat Clone. 
+By using mongoDB Indexing, it is capable of fetching the last 100 messages even from over 50 million messages in less than 1 second.
+<br>
+Real Time Communication/Notifications with Socket.io
 
 ## Tech Stack
 
@@ -48,8 +47,6 @@ npm run dev
   
 
 ## Features Screenshots
-
-  
 
 ## Group Chat
 
