@@ -42,9 +42,6 @@ npm run dev
 // Then visit this URL: http://localhost:3000
 ```
 
-<br  />
-
-  
 
 ## Features Screenshots
 
