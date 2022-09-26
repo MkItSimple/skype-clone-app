@@ -97,8 +97,8 @@ npm run dev
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663466964/chat_app/oruiuk5x4rqz3cb22jy1.jpg)
 
-## My React Portfolio Website
-- [Choreyn Anania](https://www.ananiachoreyn.com/)
+## My MERN Stack Portfolio Website
+- [Portfolio Website](https://www.ananiachoreyn.com/)
 
 ## Made By
 - [Choreyn Anania](https://github.com/MkItSimple)
