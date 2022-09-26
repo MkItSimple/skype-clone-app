@@ -1,7 +1,7 @@
   
 
 # Full Stack Skype Chat Clone. 
-By using MongoDB Indexing, it is capable of fetching the last 100 messages even from over 50 million messages in less than 1 second.
+By using MongoDB Indexing, it is capable of fetching the last 100 messages even from over 10 million messages in less than 1 second.
 <br><br>
 With Real Time Communication and Notifications using Socket.io
 
