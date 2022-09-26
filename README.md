@@ -80,7 +80,7 @@ npm run dev
 
 <br  />
 
-## Real Time Chatting with Typing indicator
+## Typing indicator
 
 ![](https://res.cloudinary.com/dcdwu2zss/image/upload/v1663467255/chat_app/p7gtscggt2naaf9ao4dk.jpg)
 
