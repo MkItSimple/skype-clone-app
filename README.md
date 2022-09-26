@@ -7,7 +7,7 @@ With Real Time Communication and Notifications using Socket.io
 
 ## Tech Stack
 
-[Socket.IO](https://socket.io/) | [NextJS](https://nextjs.org/) | [MongoDB](https://www.mongodb.com/) | [NodeJS](https://nodejs.org/en/) | [Cloudinary](https://cloudinary.com/)
+[Socket.IO](https://socket.io/) | [NextJS](https://nextjs.org/) | [MongoDB](https://www.mongodb.com/) | [NodeJS](https://nodejs.org/en/) | [Cloudinary](https://cloudinary.com/) | [Express](https://expressjs.com/)
 
   
 
