@@ -217,7 +217,11 @@ String.prototype.replaceAll = function (search, replacement) {
 
 export const removeStyles = (sms) => {
   let str = sms;
-  for (let i = 0; i < 40; i++) {
+  const stylesCount = (str.match(/style="/g) || []).length;
+  const classesCount = (str.match(/class="/g) || []).length;
+  const instancesToRemove = stylesCount + classesCount;
+
+  for (let i = 0; i < instancesToRemove + 1; i++) {
     // remove classes
     const classindex = str.indexOf(" class=");
     if (classindex !== -1) {

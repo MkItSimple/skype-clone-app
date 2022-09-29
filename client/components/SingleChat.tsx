@@ -26,6 +26,7 @@ const SingleChat = () => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [showWYSIWYG, setShowWYSIWYG] = useState(false);
   const [scrollAgain, setScrollAgain] = useState(false);
+  const [plainTextOnly, setplainTextOnly] = useState(true);
 
   const bRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -116,6 +117,7 @@ const SingleChat = () => {
 
   useEffect(() => {
     getHeight();
+    showWYSIWYG === true ? setplainTextOnly(false) : setplainTextOnly(true);
   }, [showEmojiPicker, showWYSIWYG]);
 
   const emojiClicked = (emoji: string) => {
@@ -208,6 +210,7 @@ const SingleChat = () => {
         bottomHeight={height}
         showEmojiPicker={showEmojiPicker}
         showWYSIWYG={showWYSIWYG}
+        plainTextOnly={plainTextOnly}
       >
         <ChatHeader
           user={user}
@@ -325,6 +328,7 @@ type SingleChatContainerProps = {
   bottomHeight: number;
   showEmojiPicker: boolean;
   showWYSIWYG: boolean;
+  plainTextOnly: boolean;
 };
 const SingleChatContainer = styled.div<SingleChatContainerProps>`
   height: calc(100vh);
@@ -518,7 +522,8 @@ const SingleChatContainer = styled.div<SingleChatContainerProps>`
     overflow-y: auto;
     flex: 1;
     z-index: 1;
-    /* -webkit-user-modify: read-write-plaintext-only; */
+    -webkit-user-modify: ${(props) =>
+      props.plainTextOnly ? "read-write-plaintext-only" : "read-write"};
   }
 
   .smiley {
